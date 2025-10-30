@@ -3,10 +3,10 @@ import chatIcon from "../assets/icons/chat-svgrepo-com.svg";
 
 export const NavBar = () => {
   return (
-    <nav className="fixed top-0 left-0 w-full h-14 bg-white flex justify-between items-center shadow-md px-4 md:px-8 z-50">
+    <nav className="fixed top-0 left-0 w-full h-16 bg-white flex justify-between items-center shadow-sm px-4 md:px-8 z-50">
       {/* --- Logo (hidden on small screens) --- */}
-      <div className="hidden md:flex items-center justify-center">
-        <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 font-extrabold text-2xl md:text-2xl tracking-wider drop-shadow-md">
+      <div className=" lg:flex md:flex items-center justify-center">
+        <h1 className=" text-blue-400 font-extrabold text-2xl md:text-2xl ">
           INNOVATEHUB
         </h1>
       </div>
@@ -21,7 +21,7 @@ export const NavBar = () => {
             className="w-10 h-10"
           />
           <h2 className=" hidden sm:block ml-1 text-sm sm:text-base font-bold text-gray-800">
-            Get Connected
+            Messages
           </h2>
         </div>
 
