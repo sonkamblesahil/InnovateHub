@@ -11,41 +11,56 @@ import { useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
   const navigate = useNavigate();
+
   return (
-    <div className="h-full w-full bg-white">
-      <ul className="px-4 pt-10 space-y-4">
-        <li
-          className="flex items-center text-zinc-700 gap-2 hover:text-blue-700 hover:bg-blue-100 cursor-pointer font-bold h-10 rounded-md p-2"
+    <div className="h-full bg-white w-64 md:w-56 sm:w-20 flex flex-col">
+      {/* Sidebar Menu */}
+      <ul className="px-4 pt-10 space-y-3 flex-1">
+        <SidebarItem
+          icon={<LayoutDashboard size={20} />}
+          label="Dashboard"
           onClick={() => navigate("/")}
-        >
-          <LayoutDashboard size={20} className="text-zinc-500" /> Dashboard
-        </li>
-        <li
-          className="flex items-center gap-2 text-zinc-700 hover:text-blue-700 hover:bg-blue-100 cursor-pointer font-bold h-10 rounded-md p-2"
+        />
+        <SidebarItem
+          icon={<Handshake size={20} />}
+          label="Jobs"
+          onClick={() => navigate("/jobs")}
+        />
+        <SidebarItem
+          icon={<FolderKanban size={20} />}
+          label="Projects"
           onClick={() => navigate("/projects")}
-        >
-          <FolderKanban size={20} className="text-zinc-500" /> Projects
-        </li>
-        <li
-          className="flex items-center gap-2 text-zinc-700 hover:text-blue-700 hover:bg-blue-100 cursor-pointer font-bold h-10 rounded-md p-2"
+        />
+        <SidebarItem
+          icon={<Users size={20} />}
+          label="Investors"
           onClick={() => navigate("/investors")}
-        >
-          <Users size={20} className="text-zinc-500" /> Investors
-        </li>
-        <li
-          className="flex items-center gap-2 text-zinc-700 hover:text-blue-700 hover:bg-blue-100 cursor-pointer font-bold h-10 rounded-md p-2"
+        />
+        <SidebarItem
+          icon={<Newspaper size={20} />}
+          label="News"
           onClick={() => navigate("/news")}
-        >
-          <Newspaper size={20} className="text-zinc-500" /> News
-        </li>
-        <li
-          className="flex items-center gap-2 text-zinc-700 hover:text-blue-700 hover:bg-blue-100 cursor-pointer font-bold h-10 rounded-md p-2"
+        />
+        <SidebarItem
+          icon={<MessageSquare size={20} />}
+          label="Messages"
           onClick={() => navigate("/messages")}
-        >
-          <MessageSquare size={20} className="text-zinc-500" /> Messages
-        </li>
+        />
       </ul>
     </div>
+  );
+};
+
+const SidebarItem = ({ icon, label, onClick }) => {
+  return (
+    <li
+      className="flex items-center gap-3 text-zinc-700 hover:text-blue-700 hover:bg-blue-100 cursor-pointer font-semibold h-10 rounded-md p-2 transition-all duration-200"
+      onClick={onClick}
+    >
+      <span className="text-zinc-500">{icon}</span>
+      {/* Hide text on small screens */}
+      <span className="hidden sm:hidden md:inline">{label}</span>
+    </li>
   );
 };
 
