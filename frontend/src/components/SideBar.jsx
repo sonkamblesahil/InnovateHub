@@ -54,10 +54,10 @@ const Sidebar = () => {
 const SidebarItem = ({ icon, label, onClick }) => {
   return (
     <li
-      className="flex items-center gap-3 text-zinc-700 hover:text-blue-700 hover:bg-blue-100 cursor-pointer font-semibold h-10 rounded-md p-2 transition-all duration-200"
+      className="flex items-center gap-3 text-zinc-800 hover:text-blue-700 hover:bg-blue-100 cursor-pointer font-semibold h-10 rounded-md p-2 transition-all duration-200"
       onClick={onClick}
     >
-      <span className="text-zinc-500">{icon}</span>
+      <span className="text-zinc-800">{icon}</span>
       {/* Hide text on small screens */}
       <span className="hidden sm:hidden md:inline">{label}</span>
     </li>
