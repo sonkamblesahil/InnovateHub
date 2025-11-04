@@ -8,13 +8,28 @@ import NewsPage from "./pages/NewsPage.jsx";
 
 function App() {
   return (
-    <div className="maindiv min-h-screen bg-gray-100 overflow-x-hidden">
+    <div className="maindiv bg-gray-100 overflow-x-hidden">
+      {/* Fixed Top Navbar */}
       <NavBar />
+
       <div className="flex pt-16">
-        <div className="hidden md:block w-[15vw] fixed top-16 left-0 h-[calc(100vh-4rem)] overflow-auto">
+        {/* Fixed Sidebar (visible on md and up) */}
+        <div className="hidden md:block w-[18vw] fixed top-16 left-0 h-[calc(100vh-4rem)] overflow-y-auto bg-white shadow-sm">
           <Sidebar />
         </div>
-        <div className="w-full min-h-[calc(100vh-4rem)] md:ml-[15vw] p-4">
+
+        {/* Main Content Area */}
+        <div
+          className="
+            flex-1 
+            ml-0 
+            md:ml-[18vw] 
+            p-4 
+            min-h-[calc(100vh-4rem)] 
+            overflow-y-auto 
+            lg:overflow-y-visible
+          "
+        >
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/projects" element={<ProjectsPage />} />
