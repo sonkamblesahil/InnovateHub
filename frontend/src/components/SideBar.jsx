@@ -7,59 +7,55 @@ import {
   MessageSquare,
   Handshake,
 } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Sidebar = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // Sidebar items config (simplifies JSX)
+  const menuItems = [
+    { label: "Dashboard", icon: <LayoutDashboard size={20} />, path: "/" },
+    { label: "Jobs", icon: <Handshake size={20} />, path: "/jobs" },
+    { label: "Projects", icon: <FolderKanban size={20} />, path: "/projects" },
+    { label: "Investors", icon: <Users size={20} />, path: "/investors" },
+    { label: "News", icon: <Newspaper size={20} />, path: "/news" },
+    { label: "Messages", icon: <MessageSquare size={20} />, path: "/messages" },
+  ];
 
   return (
-    <div className="h-full bg-white w-64 md:w-56 sm:w-20 flex flex-col">
+    <div className="h-full bg-white  flex flex-col border-r border-gray-200 shadow-sm">
       {/* Sidebar Menu */}
-      <ul className="px-4 pt-10 space-y-3 flex-1">
-        <SidebarItem
-          icon={<LayoutDashboard size={20} />}
-          label="Dashboard"
-          onClick={() => navigate("/")}
-        />
-        <SidebarItem
-          icon={<Handshake size={20} />}
-          label="Jobs"
-          onClick={() => navigate("/jobs")}
-        />
-        <SidebarItem
-          icon={<FolderKanban size={20} />}
-          label="Projects"
-          onClick={() => navigate("/projects")}
-        />
-        <SidebarItem
-          icon={<Users size={20} />}
-          label="Investors"
-          onClick={() => navigate("/investors")}
-        />
-        <SidebarItem
-          icon={<Newspaper size={20} />}
-          label="News"
-          onClick={() => navigate("/news")}
-        />
-        <SidebarItem
-          icon={<MessageSquare size={20} />}
-          label="Messages"
-          onClick={() => navigate("/messages")}
-        />
+      <ul className="px-4 pt-10 space-y-2 flex-1">
+        {menuItems.map((item) => (
+          <SidebarItem
+            key={item.label}
+            icon={item.icon}
+            label={item.label}
+            active={location.pathname === item.path}
+            onClick={() => navigate(item.path)}
+          />
+        ))}
       </ul>
     </div>
   );
 };
 
-const SidebarItem = ({ icon, label, onClick }) => {
+// Reusable Item Component
+const SidebarItem = ({ icon, label, active, onClick }) => {
   return (
     <li
-      className="flex items-center gap-3 text-zinc-800 hover:text-blue-700 hover:bg-blue-100 cursor-pointer font-semibold h-10 rounded-md p-2 transition-all duration-200"
       onClick={onClick}
+      className={`flex items-center gap-3 cursor-pointer h-10 rounded-md p-2 transition-all duration-200
+      ${
+        active
+          ? "bg-blue-100 text-blue-700 font-semibold"
+          : "text-zinc-700 hover:text-blue-700 hover:bg-blue-50"
+      }`}
     >
       <span className="text-zinc-800">{icon}</span>
-      {/* Hide text on small screens */}
-      <span className="hidden sm:hidden md:inline">{label}</span>
+      {/* Hide text on small screens (icons only) */}
+      <span className="hidden md:inline">{label}</span>
     </li>
   );
 };
