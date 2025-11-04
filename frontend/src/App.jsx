@@ -5,6 +5,7 @@ import HomePage from "./pages/HomePage.jsx";
 import ProjectsPage from "./pages/ProjectPage.jsx";
 import InvestorsPage from "./pages/InvestorsPage.jsx";
 import NewsPage from "./pages/NewsPage.jsx";
+import MessagePage from "./pages/MessagePage.jsx";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
             <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/investors" element={<InvestorsPage />} />
             <Route path="/news" element={<NewsPage />} />
+            <Route path="/messages" element={<MessagePage/>} />
           </Routes>
         </div>
       </div>
