@@ -17,11 +17,11 @@ const NewsPage = () => {
       </div>
 
       {/* Main Content */}
-      <div className="flex flex-col lg:flex-row gap-4 flex-grow">
+      <div className="flex flex-col lg:flex-row gap-4 flex-grow:1">
         {/* News List */}
         <div className="newsList w-full lg:w-[60%] bg-white rounded-2xl p-3 md:p-4 shadow-sm flex flex-col md:h-[74vh]  h-full ">
           {/* IMPORTANT: overflow-y-auto only on large screens */}
-          <div className="newsItem flex-grow pr-2 lg:overflow-y-auto">
+          <div className="newsItem flex-grow:1 pr-2 lg:overflow-y-auto">
             {/* News Cards */}
             {[...Array(10)].map((_, i) => (
               <NewsCard key={i} />
@@ -32,7 +32,7 @@ const NewsPage = () => {
         {/* Right Section */}
         <div className="hidden lg:flex rightSection w-full lg:w-[35%] flex-col gap-4 h-[74vh] ">
           {/* Trending Topics */}
-          <div className="bg-white rounded-2xl p-4 shadow-sm flex-grow overflow-y-auto">
+          <div className="bg-white rounded-2xl p-4 shadow-sm flex-grow:1 overflow-y-auto">
             <h3 className="font-bold text-lg mb-3">Trending Topics</h3>
             <ul className="space-y-2">
               <li className="flex justify-between text-gray-700">
